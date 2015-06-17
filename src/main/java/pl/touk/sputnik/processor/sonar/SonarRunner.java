@@ -52,6 +52,7 @@ public class SonarRunner {
      */
     public File run() throws IOException {
         Properties props = loadBaseProperties();
+        loadSystemProperties(props);
         setAdditionalProperties(props);
         log.info("Sonar configuration: {}", props.toString());
         sonarEmbeddedRunner.addProperties(props);
@@ -74,5 +75,18 @@ public class SonarRunner {
         props.put(SonarProperties.VERBOSE, ConfigurationHolder.instance().getProperty(GeneralOption.SONAR_VERBOSE));
         props.put(SonarProperties.WORKDIR, OUTPUT_DIR);
         props.put(SonarProperties.PROJECT_BASEDIR, ".");
+    }
+
+    /**
+     * Load sonar properties from Java system properties
+     * @param props a Properties instance
+     */
+    void loadSystemProperties(Properties props) {
+        Properties ps = System.getProperties();
+        for (Object key : ps.keySet()) {
+            if (((String)key).startsWith("sonar.")){
+                props.put(key, ps.getProperty((String)key));
+            }
+        }
     }
 }
