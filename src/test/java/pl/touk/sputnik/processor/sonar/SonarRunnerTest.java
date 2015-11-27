@@ -83,7 +83,7 @@ public class SonarRunnerTest {
         assertThat(props.getProperty(SonarProperties.INCLUDE_FILES)).contains("first");
         assertThat(props.getProperty(SonarProperties.INCLUDE_FILES)).contains("second");
         assertThat(StringUtil.split(props.getProperty(SonarProperties.INCLUDE_FILES), ',')).hasSize(2);
-        assertThat(props.getProperty(SonarProperties.ANALISYS_MODE)).isEqualTo("incremental");
+        assertThat(props.getProperty(SonarProperties.ANALISYS_MODE)).isEqualTo("preview");
         assertThat(props.getProperty(SonarProperties.SCM_ENABLED)).isEqualTo("false");
         assertThat(props.getProperty(SonarProperties.SCM_STAT_ENABLED)).isEqualTo("false");
         assertThat(props.getProperty(SonarProperties.ISSUEASSIGN_PLUGIN)).isEqualTo("false");

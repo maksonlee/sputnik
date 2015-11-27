@@ -67,7 +67,7 @@ public class SonarRunner {
     @VisibleForTesting
     void setAdditionalProperties(Properties props) {
         props.put(SonarProperties.INCLUDE_FILES, StringUtils.join(files, ", "));
-        props.put(SonarProperties.ANALISYS_MODE, "incremental");
+        props.put(SonarProperties.ANALISYS_MODE, "preview");
         props.put(SonarProperties.SCM_ENABLED, "false");
         props.put(SonarProperties.SCM_STAT_ENABLED, "false");
         props.put(SonarProperties.ISSUEASSIGN_PLUGIN, "false");
